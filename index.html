@@ -146,16 +146,56 @@
         .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; font-size: 14px; color: var(--gray); line-height: 1.7; padding: 0 24px; }
         .faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
 
-        .cta-section { background: var(--navy); text-align: center; position: relative; overflow: hidden; }
+        /* ===== CONTACT SECTION ===== */
+        .cta-section { background: var(--navy); position: relative; overflow: hidden; padding: 96px 48px; }
         .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(37,99,235,0.25) 0%, transparent 70%); }
         .cta-section .section-inner { position: relative; z-index: 1; }
         .cta-section .section-title { color: white; }
-        .cta-section .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 40px; }
         .cta-section .section-tag { color: var(--gold-light); }
-        .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-        .btn-whatsapp { padding: 16px 32px; background: #25d366; color: white; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.2s; }
-        .btn-whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(37,211,102,0.3); }
-        .cta-detail { margin-top: 40px; font-size: 13px; color: rgba(255,255,255,0.3); }
+
+        .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; margin-top: 56px; }
+        .contact-info p { font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 36px; }
+        .contact-perks { display: flex; flex-direction: column; gap: 16px; }
+        .contact-perk { display: flex; align-items: center; gap: 14px; }
+        .contact-perk-icon { width: 40px; height: 40px; background: rgba(37,99,235,0.2); border: 1px solid rgba(37,99,235,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+        .contact-perk-text { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+        .contact-perk-text strong { color: white; display: block; font-size: 15px; margin-bottom: 2px; }
+
+        .contact-form-box { background: rgba(255,255,255,0.05); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 36px; backdrop-filter: blur(12px); }
+        .contact-form-box h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: white; margin-bottom: 24px; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+        .form-group label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: rgba(255,255,255,0.07);
+            border: 1.5px solid rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-family: var(--font-body);
+            color: white;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+            width: 100%;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+        .form-group select option { background: var(--navy-mid); color: white; }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { border-color: var(--blue); background: rgba(37,99,235,0.1); }
+        .form-group textarea { resize: none; min-height: 90px; }
+        .form-submit { width: 100%; padding: 14px; background: var(--blue); color: white; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; font-family: var(--font-body); cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 4px; }
+        .form-submit:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 10px 28px rgba(37,99,235,0.4); }
+        .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .form-note { font-size: 12px; color: rgba(255,255,255,0.25); text-align: center; margin-top: 14px; }
+
+        .form-message { border-radius: 10px; padding: 14px 18px; font-size: 14px; font-weight: 500; margin-bottom: 16px; display: none; align-items: center; gap: 10px; }
+        .form-message.success { background: rgba(22,163,74,0.15); border: 1px solid rgba(22,163,74,0.3); color: #4ade80; }
+        .form-message.error { background: rgba(220,38,38,0.12); border: 1px solid rgba(220,38,38,0.25); color: #f87171; }
 
         footer { background: #070e2a; padding: 48px 48px 32px; }
         .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
@@ -184,13 +224,15 @@
             .planes-grid { grid-template-columns: 1fr; }
             .plan-card.popular { transform: none; }
             .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+            .contact-layout { grid-template-columns: 1fr; gap: 40px; }
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-links { justify-content: center; }
+            .cta-section { padding: 64px 24px; }
         }
         @media (max-width: 600px) {
             .steps { grid-template-columns: 1fr; }
             .hero-stats { gap: 20px; }
-            .cta-buttons { flex-direction: column; align-items: center; }
+            .form-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -333,7 +375,7 @@
                 <ul class="plan-features">
                     <li>Hasta 5 comercios</li><li>Clientes ilimitados</li><li>Todo lo incluido</li>
                     <li>Múltiples sucursales</li><li>Panel unificado</li>
-                    <li>Usuarios ilimitados</li><li>SLA 4 horas soporte</li>
+                    <li>Usuarios ilimitados</li><li>Multiples métodos de fidelización</li>
                 </ul>
                 <a href="#contacto" class="plan-btn">Contactar</a>
             </div>
@@ -347,8 +389,8 @@
             <div class="reveal">
                 <div class="section-tag">FAQ</div>
                 <h2 class="section-title">Preguntas<br><span>frecuentes</span></h2>
-                <p class="section-sub">¿Tienes más dudas? Escríbenos por WhatsApp y te respondemos en menos de 1 hora.</p>
-                <a href="https://wa.me/50763491308" target="_blank" class="btn-primary" style="margin-top:28px;display:inline-flex;">💬 Escribir por WhatsApp</a>
+                <p class="section-sub">¿Tienes más dudas? Escríbenos y te respondemos en menos de 24 horas.</p>
+                <a href="#contacto" class="btn-primary" style="margin-top:28px;display:inline-flex;">✉️ Enviar mensaje →</a>
             </div>
             <div class="faq-list reveal">
                 <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿El cliente necesita descargar una app?<div class="faq-icon">+</div></div><div class="faq-a">No. La tarjeta es una PWA — se instala directamente desde el navegador del celular sin pasar por la App Store ni Google Play. El cliente solo escanea el QR y listo.</div></div>
@@ -362,21 +404,114 @@
     </div>
 </section>
 
+<!-- ===== CONTACT SECTION WITH FORMSPREE ===== -->
 <section class="cta-section" id="contacto">
     <div class="section-inner">
-        <div class="reveal">
+        <div class="reveal" style="text-align:center;">
             <div class="section-tag">Empieza hoy</div>
             <h2 class="section-title">Tu programa de fidelidad<br>digital en menos de 1 hora</h2>
-            <p class="section-sub">30 días gratis. Sin tarjeta de crédito. Sin contratos. Solo escríbenos y configuramos todo.</p>
         </div>
-        <div class="cta-buttons reveal">
-            <a href="https://wa.me/50763491308?text=Hola%2C%20quiero%20conocer%20PointsBack%20Card%20para%20mi%20negocio" target="_blank" class="btn-whatsapp">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Escribir por WhatsApp
-            </a>
-            <a href="mailto:info@pointsbackcard.com" class="btn-outline">✉️ Enviar un correo</a>
+
+        <div class="contact-layout">
+            <!-- Left: info -->
+            <div class="contact-info reveal">
+                <p>30 días gratis. Sin tarjeta de crédito. Sin contratos. Cuéntanos sobre tu negocio y te configuramos todo.</p>
+                <div class="contact-perks">
+                    <div class="contact-perk">
+                        <div class="contact-perk-icon">⚡</div>
+                        <div class="contact-perk-text">
+                            <strong>Respuesta rápida</strong>
+                            Te respondemos en menos de 24 horas hábiles.
+                        </div>
+                    </div>
+                    <div class="contact-perk">
+                        <div class="contact-perk-icon">🛠️</div>
+                        <div class="contact-perk-text">
+                            <strong>Configuración incluida</strong>
+                            Nosotros lo montamos. Tú solo abres tu negocio.
+                        </div>
+                    </div>
+                    <div class="contact-perk">
+                        <div class="contact-perk-icon">🎯</div>
+                        <div class="contact-perk-text">
+                            <strong>30 días gratis</strong>
+                            Sin compromisos. Sin tarjeta de crédito.
+                        </div>
+                    </div>
+                    <div class="contact-perk">
+                        <div class="contact-perk-icon">✉️</div>
+                        <div class="contact-perk-text">
+                            <strong>También por correo directo</strong>
+                            info@pointsbackcard.com
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Formspree form -->
+            <div class="contact-form-box reveal">
+                <h3>Solicita tu piloto gratuito</h3>
+
+                <div class="form-message success" id="form-success">
+                    ✅ ¡Mensaje enviado! Te contactamos pronto.
+                </div>
+                <div class="form-message error" id="form-error">
+                    ⚠️ Hubo un error. Intenta de nuevo o escríbenos a info@pointsbackcard.com
+                </div>
+
+                <!--
+                    PARA ACTIVAR EL FORMULARIO:
+                    1. Ve a https://formspree.io y crea una cuenta gratuita (plan Free = 50 envíos/mes).
+                    2. Crea un nuevo form, apunta el correo destino a info@pointsbackcard.com
+                    3. Copia el ID que te dan (formato: xpznqkrb) y reemplaza YOUR_FORM_ID abajo.
+                    Ejemplo: action="https://formspree.io/f/xpznqkrb"
+                -->
+                <form id="contact-form" action="https://formspree.io/f/mzdyqevd" method="POST">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="negocio">Negocio</label>
+                            <input type="text" id="negocio" name="negocio" placeholder="Ej: Panadería El Sol" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="plan">Plan de interés</label>
+                        <select id="plan" name="plan">
+                            <option value="">Selecciona un plan...</option>
+                            <option value="Básico ($29/mes)">Básico — $29/mes</option>
+                            <option value="Profesional ($59/mes)">Profesional — $59/mes ⭐</option>
+                            <option value="Empresarial ($120/mes)">Empresarial — $120/mes</option>
+                            <option value="No lo sé aún">No lo sé aún, quiero más info</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Sobre tu negocio <span style="opacity:0.4">(opcional)</span></label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Tipo de negocio, número de clientes aproximado, preguntas..."></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit" id="submit-btn">
+                        <span id="btn-text">Solicitar piloto gratis →</span>
+                        <span id="btn-loading" style="display:none;">Enviando...</span>
+                    </button>
+                    <div class="form-note">Sin spam. Sin cobros automáticos. Solo te contactamos para ayudarte.</div>
+                </form>
+            </div>
         </div>
-        <div class="cta-detail reveal">Systech Solutions · Panamá · info@pointsbackcard.com</div>
+
+        <div class="reveal" style="text-align:center; margin-top:48px;">
+            <div style="font-size:13px; color:rgba(255,255,255,0.25);">Systech Solutions · Panamá · info@pointsbackcard.com</div>
+        </div>
     </div>
 </section>
 
@@ -394,26 +529,71 @@
 </footer>
 
 <script>
+    // Navbar scroll shadow
     const navbar = document.getElementById("navbar");
     window.addEventListener("scroll", () => { navbar.classList.toggle("scrolled", window.scrollY > 20); });
+
+    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, i) => {
             if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add("visible"), i * 80); observer.unobserve(entry.target); }
         });
     }, { threshold: 0.1 });
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    // FAQ toggle
     function toggleFaq(el) {
         const item = el.parentElement;
         const isOpen = item.classList.contains("open");
         document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
         if (!isOpen) item.classList.add("open");
     }
+
+    // Mobile menu
     function toggleMenu() {
         const links = document.querySelector(".nav-links");
         if (links.style.display === "flex") { links.style.display = ""; }
         else { links.style.cssText = "display:flex;flex-direction:column;position:fixed;top:66px;left:0;right:0;background:white;padding:20px;gap:16px;box-shadow:0 8px 30px rgba(0,0,0,0.1);z-index:99;"; }
     }
     document.querySelectorAll(".nav-links a").forEach(a => { a.addEventListener("click", () => { document.querySelector(".nav-links").style.display = ""; }); });
+
+    // Formspree AJAX submit — no redirección, mensajes inline
+    const form = document.getElementById("contact-form");
+    const btnText = document.getElementById("btn-text");
+    const btnLoading = document.getElementById("btn-loading");
+    const submitBtn = document.getElementById("submit-btn");
+    const successMsg = document.getElementById("form-success");
+    const errorMsg = document.getElementById("form-error");
+
+    form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        successMsg.style.display = "none";
+        errorMsg.style.display = "none";
+        btnText.style.display = "none";
+        btnLoading.style.display = "inline";
+        submitBtn.disabled = true;
+
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: new FormData(form),
+                headers: { "Accept": "application/json" }
+            });
+
+            if (response.ok) {
+                successMsg.style.display = "flex";
+                form.reset();
+            } else {
+                errorMsg.style.display = "flex";
+            }
+        } catch (err) {
+            errorMsg.style.display = "flex";
+        } finally {
+            btnText.style.display = "inline";
+            btnLoading.style.display = "none";
+            submitBtn.disabled = false;
+        }
+    });
 </script>
 </body>
 </html>
